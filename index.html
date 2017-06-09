@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
 <body>
-
-<h2>My First JavaScript</h2>
-
-<button type="button"
-onclick="document.getElementById('demo').innerHTML = Date()">
-Click me to display Date and Time.</button>
-
+<h1>Clock</h1>
 <p id="demo"></p>
 
+<script>
+setInterval(call,100);
+setInterval(time,100);
+
+function time(){
+var d = new Date();
+document.getElementById("demo").innerHTML = d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+}
+function call(){
+var d = new Date();
+if(d.getSeconds()%10==0){
+alert("Working");
+}
+}
+</script>
+
 </body>
-</html> 
+</html>
