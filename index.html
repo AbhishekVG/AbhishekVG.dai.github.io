@@ -1,23 +1,41 @@
 <!DOCTYPE html>
 <html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <body>
-<h1>Clock</h1>
-<p id="demo"></p>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+Total loan amount &nbsp : <input type="text" ng-model="p" ng-change=calculate()><br>
+rate of interest &nbsp &nbsp  &nbsp &nbsp : <input  ng-model="r" ng-change=calculate()><br>
+Number of months  &nbsp: <input type="text" ng-model="n" ng-change=calculate()><br>
+<!-- Test <input type="text" ng-model="n" ng-change=pow(p,r)><br> -->
+<br>
+EMI to be payed every month: {{result}}
+
+</div>
 
 <script>
-setInterval(call,100);
-setInterval(time,100);
-
-function time(){
-var d = new Date();
-document.getElementById("demo").innerHTML = d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
-}
-function call(){
-var d = new Date();
-if(d.getSeconds()%10==0){
-alert("Working");
-}
-}
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.p;
+    $scope.r;
+	$scope.n;
+	var rate;
+	$scope.calculate=function(){
+	rate=$scope.r/12/100;
+	$scope.result=$scope.p*rate*$scope.pow(rate,$scope.n)/($scope.pow(rate,$scope.n)-1);
+	}
+	$scope.pow=function(rate,n){
+	rate=parseFloat(rate);
+	rate=rate+1;
+	var temp=1;
+	while(n>=1){
+	temp*=rate;
+	n--;
+	}
+	return temp;
+	}
+	});
 </script>
 
 </body>
