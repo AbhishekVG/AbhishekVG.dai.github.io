@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		</head>
 <body>
 
 <div ng-app="myApp" ng-controller="myCtrl">
-
-Total loan amount &nbsp : <input type="text" ng-model="p" ng-change=calculate()><br>
-rate of interest &nbsp &nbsp  &nbsp &nbsp : <input  ng-model="r" ng-change=calculate()><br>
-Number of months  &nbsp: <input type="text" ng-model="n" ng-change=calculate()><br>
-<!-- Test <input type="text" ng-model="n" ng-change=pow(p,r)><br> -->
+  <form>
+    <div class="form-group">
+      <label for="usr">Total loan amount :</label>
+      <input type="text"  ng-model="p" ng-change=calculate() class="form-control" id="usr">
+    </div>
+    <div class="form-group">
+      <label for="pwd">rate of interest:</label>
+      <input   ng-model="r" ng-change=calculate() class="form-control" id="pwd">
+    </div>
+<div class="form-group">
+      <label for="pwd">Number of months:</label>
+      <input  type="text" ng-model="n" ng-change=calculate() class="form-control" id="pwd">
+    </div>
+  </form>
 <br>
 EMI to be payed every month: {{result}}
 
